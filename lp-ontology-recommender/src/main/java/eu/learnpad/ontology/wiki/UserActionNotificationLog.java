@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eu.learnpad.ontology.notification;
+package eu.learnpad.ontology.wiki;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -18,51 +18,64 @@ import eu.learnpad.ontology.transformation.SimpleModelTransformator;
 import eu.learnpad.ontology.util.ArgumentCheck;
 import eu.learnpad.or.rest.data.NotificationActionType;
 import eu.learnpad.or.rest.data.ResourceType;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
 /**
  * Stores all kind of user actions on wiki platform in the ontology. Ex. Page
- * visits and mutations (add, modify, delete). Same for commments, attachements
+ * visits and mutations (add, modify, delete). Same for commments, attachments
  * and feedbacks.
  *
  *
  * @author sandro.emmenegger
  */
-public class NotificationLog {
+public class UserActionNotificationLog {
 
-    private static final NotificationLog SINGLETON = new NotificationLog();
+    private static final UserActionNotificationLog SINGLETON = new UserActionNotificationLog();
 
-    private NotificationLog() {
+    private UserActionNotificationLog() {
     }
 
-    public static NotificationLog getInstance() {
+    public static UserActionNotificationLog getInstance() {
         return SINGLETON;
+    }
+    
+    public static String createResourceId(String modelSetId, String modelId, String artifactId){
+        StringBuilder resourceId = new StringBuilder(getStringValue(modelSetId, ""));
+        resourceId.append(getStringValue(modelId, ""));
+        resourceId.append(getStringValue(artifactId, ""));
+        return resourceId.toString();
+    }
+    
+    private static String getStringValue(String s, String defaultValue){
+        if(s == null){
+            return defaultValue;
+        }
+        return s;
     }
 
     /**
      * Create action history log for a wiki page or one of it's annotations
-     * (commment, attachement, feedback)
+     * (commment, attachment, feedback)
      *
      * @param modelSetId
      * @param modelId
      * @param artifactId model object id linked to the resource
      * @param resourceId either the page id (URL) or the comment id
-     * @param resourceType one of page, comment, attachement or feedback
-     * @param referringToResourceId the resource id this resource is reffering
+     * @param resourceType one of page, comment, attachment or feedback
      * to (ex. the page id a comment is referring to)
      * @param userId
      * @param timestamp
      * @param action
+     * @return the log entry created in the ontology
      * @throws eu.learnpad.ontology.recommender.RecommenderException
      */
-    public void logResourceNotification(String modelSetId,
+    public Individual logResourceNotification(String modelSetId,
             String modelId,
             String artifactId,
             String resourceId,
             ResourceType resourceType,
-            String referringToResourceId,
             String userId,
             Long timestamp,
             NotificationActionType action) throws RecommenderException {
@@ -71,27 +84,28 @@ public class NotificationLog {
         ArgumentCheck.notNull(resourceId, "resourceId in (logResourceNotification");
 
         OntModel model = FileOntAO.getInstance().getModelWithExecutionData(SimpleModelTransformator.getInstance().getLatestModelSetId());
-
+        Individual logTargetInstance = null;    
+        
         if (resourceType != null) {
-            Individual logTargetInstance = null;
+            
             switch (resourceType) {
                 case PAGE: {
-                    logTargetInstance = getOrCreatePageInstance(model, resourceId);
+                    logTargetInstance = getOrCreatePageInstance(model, createResourceId(modelSetId, modelId, artifactId));
                     break;
                 }
                 case COMMENT: {
                     OntClass annotationClass = model.createClass(APP.NS.XWIKI + "Comment");
-                    logTargetInstance = getOrCreateAnnotation(model, referringToResourceId, resourceId, annotationClass);
+                    logTargetInstance = getOrCreateAnnotation(model, createResourceId(modelSetId, modelId, artifactId), resourceId, annotationClass);
                     break;
                 }
                 case ATTACHMENT: {
-                    OntClass annotationClass = model.createClass(APP.NS.XWIKI + "Attachement");
-                    logTargetInstance = getOrCreateAnnotation(model, referringToResourceId, resourceId, annotationClass);
+                    OntClass annotationClass = model.createClass(APP.NS.XWIKI + "Attachment");
+                    logTargetInstance = getOrCreateAnnotation(model, createResourceId(modelSetId, modelId, artifactId), resourceId, annotationClass);
                     break;
                 }
                 case FEEDBACK: {
                     OntClass annotationClass = model.createClass(APP.NS.XWIKI + "Feedback");
-                    logTargetInstance = getOrCreateAnnotation(model, referringToResourceId, resourceId, annotationClass);
+                    logTargetInstance = getOrCreateAnnotation(model, createResourceId(modelSetId, modelId, artifactId), resourceId, annotationClass);
                     break;
                 }
             }
@@ -104,10 +118,10 @@ public class NotificationLog {
                     FileOntAO.getInstance().persistNotificationLogModel();
                 }
             }
-
         }
+        return logTargetInstance;
     }
-
+    
     private Individual getOrCreatePageInstance(OntModel model, String pageURL) {
 
         OntClass pageClass = model.getOntClass(APP.NS.XWIKI + "Page");
@@ -119,7 +133,7 @@ public class NotificationLog {
         }
 
         //create new instance
-        Individual newPageInstance = pageClass.createIndividual(APP.NS.EXEC + "Page_" + UUID.randomUUID());
+        Individual newPageInstance = pageClass.createIndividual(pageClass.getURI()+"_"+UUID.randomUUID());
         newPageInstance.addProperty(pageUrlProperty, value);
 
         return newPageInstance;
@@ -147,8 +161,10 @@ public class NotificationLog {
 
         //actionTimestamp
         OntProperty timestampProp = model.getOntProperty(APP.NS.XWIKI + "actionTimestamp");
-        Literal timestamValue = model.createTypedLiteral(new Date(timestamp));
-        actionHistoryInstance.addProperty(timestampProp, timestamValue);
+        Calendar timestampCalendar = Calendar.getInstance();
+        timestampCalendar.setTimeInMillis(timestamp);
+        Literal timestampValue = model.createTypedLiteral(timestampCalendar);
+        actionHistoryInstance.addProperty(timestampProp, timestampValue);
 
         //actionType
         OntProperty actionProp = model.getOntProperty(APP.NS.XWIKI + "actionType");

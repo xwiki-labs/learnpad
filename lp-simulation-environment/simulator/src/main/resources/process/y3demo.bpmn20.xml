@@ -22,9 +22,9 @@
 
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <collaboration id="Collaboration">
-    <participant id="pool1" processRef="y3-demo"></participant>
+    <participant id="pool1" processRef="mod.21262"></participant>
   </collaboration>
-  <process id="y3-demo" name="SUAP Process - Service Conference" isExecutable="true">
+  <process id="mod.21262" name="SUAP Process - Service Conference" isExecutable="true">
     <laneSet id="laneSet_process_pool1">
       <lane id="lane1" name="Other Office 1">
         <flowNodeRef>usertask3</flowNodeRef>
@@ -62,7 +62,6 @@
         <flowNodeRef>usertask22</flowNodeRef>
         <flowNodeRef>exclusivegateway11</flowNodeRef>
         <flowNodeRef>endevent1</flowNodeRef>
-        <flowNodeRef>endevent2</flowNodeRef>
         <flowNodeRef>parallelgateway1</flowNodeRef>
         <flowNodeRef>parallelgateway2</flowNodeRef>
       </lane>
@@ -416,7 +415,8 @@
     <userTask id="usertask16" name="Evaluate check of Third Party">
       <documentation>In this activity the SUAP office receives the opinion of other PAs relate to the specific Titolo Unico.
 &lt;div class="_answers"&gt;&lt;/div&gt;
-&lt;script&gt; var names = {"offEdiuzia":"UFFICIO EDILIZIA", "offPorto":"UFFICIO PORTO", "offAmb":"Ufficio AMBIANTE", "offAtt":"UFFICIO ATTIVITA' PRODDUTTIVE", "offPolizia":"POLIZIA MUNICIPALE", "offTrib":"UFFICIO TRIBUTI", "offPat":"UFFICIO PATRIMONIO", "offSind":"SINDACO - autorità di pubblica sicurezza", "offARPAM":"ARPAM", "offServIgiene":"SERVIZIO IGIENE E SANITA' PUBBLICA", "offDepIgiene":"DEPARTIMENTO IGIENE ALIMENTI E NUTRIZIONE", "offPrev":"DIPARTIMENTO DI PREVENZIONE E SICUREZZA NEI LUOGHI DI LAVORO", "offVVFF":"VVFF - DIPARTIMENTO DI PREVENZIONE INCENDI", "offAreaAmb":"AREA AMBIENTE", "offAreaEco":"AREA ECOLOGIA -&gt; emissioni in atmosfera", "offVal":"REGIONE - PF VALUTAZIONI ED AUTORIZZAZIONI AMBIENTALI", "offGest":"ENTE GESTORE RETE FOGNARIA (ES. MULTISERVIZI SPA)", "offSoprint":"SOPRINTENDENZA per i beni artisici", "offFerrov":"RETE FERROVIARIA ITALIANA SPA (ex FF.SS)", "offANAS":"ANAS", "offQUEST":"QUESTURA", "offPREF":"PREFETTURA", "offISP":"ISPESL", "offDog":"UFFICIO DELLE DOGANE", "offCap":"CAPITANERIA DI PORTO", "offEdil":"UFFICIO EDILIZIA"}; var answers = {"offEdiuzia" :"${answerOffEdiuzia}", "offPorto" :"${answerOffPorto}", "offAmb" :"${answerOffAmb}", "offAtt" :"${answerOffAtt}", "offPolizia" :"${answerOffPolizia}", "offTrib" :"${answerOffTrib}", "offPat" :"${answerOffPat}", "offSoprint" :"${answerOffSoprint}", "offDog" :"${answerOffDog}", "offCap" :"${answerOffCap}"}; var off1FeedbackCond = ["${off1FeedbackCond1}", "${off1FeedbackCond2}", "${off1FeedbackCond3}",]; var off2FeedbackCond = ["${off2FeedbackCond1}", "${off2FeedbackCond2}", "${off2FeedbackCond3}",]; var off1FeedbackIntegration = ["${off1FeedbackIntegration1}", "${off1FeedbackIntegration2}", "${off1FeedbackIntegration3}",]; var off2FeedbackIntegration = ["${off2FeedbackIntegration1}", "${off2FeedbackIntegration2}", "${off2FeedbackIntegration3}",]; answers["${off1Role}"] = "${off1FeedbackMotivation}"; answers["${off2Role}"] = "${off2FeedbackMotivation}"; for(var i = 0; i &lt; 3; i++) {if(off1FeedbackCond[i] != "") {answers["${off1Role}"] = answers["${off1Role}"] + "&lt;br/&gt;Condition " + i + " : " + off1FeedbackCond[i];} if(off2FeedbackCond[i] != "") {answers["${off2Role}"] = answers["${off2Role}"] + "&lt;br/&gt;Condition " + i + " : " + off2FeedbackCond[i];}} for(i = 0; i &lt; 3; i++) {if(off1FeedbackIntegration[i] != "") {answers["${off1Role}"] = answers["${off1Role}"] + "&lt;br/&gt;Required integration " + i + " : " + off1FeedbackIntegration[i];} if(off2FeedbackIntegration[i] != "") {answers["${off2Role}"] = answers["${off2Role}"] + "&lt;br/&gt;Required integration " + i + " : " + off2FeedbackIntegration[i];}} for (var prop in answers) {if (answers.hasOwnProperty(prop)) {if(answers[prop] &amp;&amp; answers[prop].length){$("._answers").append("&lt;p&gt;&lt;b&gt;" + names[prop] + "&lt;/b&gt;:&lt;br/&gt;" + answers[prop] + "&lt;/p&gt;");}}} &lt;/script&gt;
+&lt;script&gt;var off1Role = "${off1Role}";var off2Role = "${off2Role}";var answers = {"offEdiuzia" :"${answerOffEdiuzia}", "offPorto" :"${answerOffPorto}", "offAmb" :"${answerOffAmb}", "offAtt" :"${answerOffAtt}", "offPolizia" :"${answerOffPolizia}", "offTrib" :"${answerOffTrib}", "offPat" :"${answerOffPat}", "offSoprint" :"${answerOffSoprint}", "offDog" :"${answerOffDog}", "offCap" :"${answerOffCap}"}; var off1FeedbackCond = ["${off1FeedbackCond1}", "${off1FeedbackCond2}", "${off1FeedbackCond3}",]; var off2FeedbackCond = ["${off2FeedbackCond1}", "${off2FeedbackCond2}", "${off2FeedbackCond3}",]; var off1FeedbackIntegration = ["${off1FeedbackIntegration1}", "${off1FeedbackIntegration2}", "${off1FeedbackIntegration3}",]; var off2FeedbackIntegration = ["${off2FeedbackIntegration1}", "${off2FeedbackIntegration2}", "${off2FeedbackIntegration3}",];answers[off1Role] = "${off1FeedbackMotivation}";answers[off2Role] = "${off2FeedbackMotivation}";&lt;/script&gt;
+&lt;script src="resources/files/serviceconference.js"&gt;&lt;/script&gt;
 &lt;a href='resources/files/titolo_unico/${case}.pdf' target='_blank'&gt;&lt;span class="glyphicon glyphicon-file"&gt;&lt;span&gt;Entrepreneur Documents&lt;/a&gt;</documentation>
       <ioSpecification>
         <dataOutput id="DataOutput16" name="output" />
@@ -573,7 +573,6 @@
     <sequenceFlow id="flow46" sourceRef="usertask20" targetRef="exclusivegateway11"></sequenceFlow>
     <sequenceFlow id="flow47" sourceRef="usertask21" targetRef="exclusivegateway11"></sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
-    <endEvent id="endevent2" name="End"></endEvent>
 
     <userTask id="usertask22" name="Provide Final Report">
       <documentation>TODO
@@ -602,13 +601,7 @@
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
     <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
 
-    <sequenceFlow id="flow51" sourceRef="usertask1" targetRef="parallelgateway1">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${doConfOfService == "true"}]]></conditionExpression>
-    </sequenceFlow>
-
-    <sequenceFlow id="flow51_1" sourceRef="usertask1" targetRef="endevent2">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${doConfOfService == "false"}]]></conditionExpression>
-    </sequenceFlow>
+    <sequenceFlow id="flow51" sourceRef="usertask1" targetRef="parallelgateway1"></sequenceFlow>
 
     <sequenceFlow id="flow52" sourceRef="parallelgateway1" targetRef="usertask2"></sequenceFlow>
     <sequenceFlow id="flow53" sourceRef="parallelgateway1" targetRef="usertask3"></sequenceFlow>
@@ -717,9 +710,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
         <omgdc:Bounds height="35.0" width="35.0" x="1300.0" y="1070.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="endevent2" id="BPMNShape_endevent2">
-        <omgdc:Bounds height="35.0" width="35.0" x="250.0" y="980.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
         <omgdc:Bounds height="40.0" width="40.0" x="340.0" y="1067.0"></omgdc:Bounds>

@@ -87,7 +87,7 @@ function processReceiver(address) {
     newProcessReceiver.submitProcessData = function(id, values) {
 
         // SPECIAL MODIFICATIONS FOR DEMO PURPOSE ONLY
-        if(id == 'mod.27772') {
+        if(id == 'mod.27772' || id == 'mod.21093' || id == 'mod.21262') {
 
             // un-stringify
             values = JSON.parse(values);
@@ -114,15 +114,16 @@ function processReceiver(address) {
                 values['applicationATECOCategory'] = 'lpd:InstallationOfElectricalSystems';
             }
 
-            // re-stringify
-            values = JSON.stringify(values);
-        }
-
-        if(id == 'y3-demo') {
-            // un-stringify
-            values = JSON.parse(values);
-
             // some default values
+            values['off1Choice'] = 'off1Ok';
+            values['off2Choice'] = 'off2Ok';
+
+            values['off1FeedbackOpinionStatus'] = 's5';
+            values['off2FeedbackOpinionStatus'] = 's5';
+
+            values['off1FeedbackMotivation'] = '';
+            values['off2FeedbackMotivation'] = '';
+
             values['off1FeedbackCond1'] = '';
             values['off1FeedbackCond2'] = '';
             values['off1FeedbackCond3'] = '';
@@ -147,7 +148,7 @@ function processReceiver(address) {
             values['answerOffDog'] = '';
             values['answerOffCap'] = '';
 
-            if(values['case'] === '829.2015') {
+            if(values['case'] === '829-2015') {
                 values['answerOffEdiuzia'] = 'parere favorevole condizionato dello Sportello Unico per l\'Edilizia - ammissibilità dell\'intervento su richiesta di permesso di costruire';
                 values['answerOffPorto'] = 'parere positivo scritto e precedentemente depositato in ordine alla modifica del muretto';
                 values['answerOffAmb'] = 'parere di compatibilità paesaggistica ai sensi dell\'art. 146 DLgs 42/2004 e smi';
@@ -159,7 +160,7 @@ function processReceiver(address) {
                 values['answerOffCap'] = 'informato solo per conoscenza - silenzio assenso';
             }
 
-            if(values['case'] === '1118.2015') {
+            if(values['case'] === '1118-2015') {
                 values['answerOffEdiuzia'] = 'rilascio parere favorevole su presentazione SCIA';
                 values['answerOffAmb'] = 'l\'intervento proposto è compatibile a livello paesaggistico ai sensi dell\'art. 146 DLgs 42/2004';
                 values['answerOffAtt'] = 'espletata attività istruttoria - ok sui controlli formali e di merito';

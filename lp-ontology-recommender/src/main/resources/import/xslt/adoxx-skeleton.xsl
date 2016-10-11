@@ -451,6 +451,7 @@ ________________________________________________________________________________
 			<xsl:with-param name="id" select="@id"/>
 			<xsl:with-param name="name" select="@name"/>
 			<xsl:with-param name="materialURL" select="./ATTRIBUTE[@name='Document URI']"/>
+			<xsl:with-param name="contributorEmails" select="./RECORD[@name='List of Contributors']/ROW/ATTRIBUTE[@name='Contributor eMail']"/>
 			<xsl:with-param name="description" select="./ATTRIBUTE[@name='Description']"/>
 			<xsl:with-param name="comment" select="./ATTRIBUTE[@name='Comment']"/>
 			<xsl:with-param name="competenciesAndLevels" select="./RECORD[@name='CompetenciesRelated2LearningMaterial']/ROW[INTERREF/IREF]"/>
@@ -663,6 +664,8 @@ ________________________________________________________________________________
 			<xsl:with-param name="lastName" select="./ATTRIBUTE[@name='Last Name']"/>
 			<xsl:with-param name="email" select="./ATTRIBUTE[@name='E-Mail']"/>
 			<xsl:with-param name="phoneNo" select="./ATTRIBUTE[@name='Phone No']"/>
+			<xsl:with-param name="skypeId" select="./ATTRIBUTE[@name='Skype']"/>
+			<xsl:with-param name="officeAddress" select="./ATTRIBUTE[@name='Office']"/>
 		</xsl:call-template>
 		<xsl:for-each select="../CONNECTOR/FROM[@instance=current()/@name and @class=current()/@class]">
 		  <xsl:for-each select="../../INSTANCE[@name=current()/../TO/@instance and @class='Role']/@id">

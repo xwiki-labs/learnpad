@@ -15,7 +15,6 @@ import eu.learnpad.ontology.kpi.KBProcessorNotifier;
 import eu.learnpad.ontology.kpi.data.SOMEService;
 import eu.learnpad.ontology.persistence.FileOntAO;
 import eu.learnpad.ontology.recommender.RecommenderException;
-import eu.learnpad.or.CoreFacade;
 import eu.learnpad.or.rest.data.kbprocessing.KBProcessingStatusType;
 
 import java.io.ByteArrayInputStream;
@@ -70,12 +69,12 @@ public class KPILoader extends Thread {
                     }
                 });
 
-                OntModel model = FileOntAO.getInstance().getModelWithExecutionData(this.modelSetId);
+                OntModel model = FileOntAO.getInstance().getModelSet(this.modelSetId);
 
                 for (File dataFile : dataFiles) {
                     SOMEService service = new SOMEService(dataFile);
                     Model insertedKPIValuesModel = service.getModel(model);
-                    FileOntAO.getInstance().getExecutionData().add(insertedKPIValuesModel);
+                    model.add(insertedKPIValuesModel);
                 }
 
             }

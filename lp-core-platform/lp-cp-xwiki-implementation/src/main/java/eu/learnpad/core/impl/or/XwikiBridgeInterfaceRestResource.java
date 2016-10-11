@@ -23,8 +23,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Named;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -51,9 +55,11 @@ import eu.learnpad.or.rest.data.NotificationActionType;
 import eu.learnpad.or.rest.data.Recommendations;
 import eu.learnpad.or.rest.data.ResourceType;
 import eu.learnpad.or.rest.data.SimulationData;
+import eu.learnpad.or.rest.data.SimulationScoresMap;
 import eu.learnpad.or.rest.data.States;
 import eu.learnpad.or.rest.data.kbprocessing.KBProcessId;
 import eu.learnpad.or.rest.data.kbprocessing.KBProcessingStatus;
+import eu.learnpad.sim.rest.event.ScoreType;
 
 /*
  * The methods inherited form the BridgeInterface in this
@@ -73,22 +79,21 @@ public class XwikiBridgeInterfaceRestResource extends DefaultRestResource
 	@Override
 	public void resourceNotification(String modelSetId, String modelId,
 			String artifactId, String resourceId, ResourceType resourceType,
-			String referringToResourceId, String userId, Long timestamp,
+			String userId, Long timestamp,
 			NotificationActionType action) throws LpRestException {
 		HttpClient httpClient = this.getClient();
 		String uri = String.format("%s/learnpad/or/bridge/%s/resourcenotification", DefaultRestResource.REST_URI, modelSetId);
 		PutMethod putMethod = new PutMethod(uri);
 		putMethod.addRequestHeader("Accept", "application/xml");
 
-		NameValuePair[] queryString = new NameValuePair[8];
+		NameValuePair[] queryString = new NameValuePair[7];
 		queryString[0] = new NameValuePair("modelid", modelId);
 		queryString[1] = new NameValuePair("artifactid", artifactId);
 		queryString[2] = new NameValuePair("resourceid", resourceId);
 		queryString[3] = new NameValuePair("resourcetype", resourceType.toString());
-		queryString[4] = new NameValuePair("referringtoresourceid", referringToResourceId);
-		queryString[5] = new NameValuePair("userid", userId);
-		queryString[6] = new NameValuePair("timestamp", timestamp.toString());
-		queryString[7] = new NameValuePair("action", action.toString());
+		queryString[4] = new NameValuePair("userid", userId);
+		queryString[5] = new NameValuePair("timestamp", timestamp.toString());
+		queryString[6] = new NameValuePair("action", action.toString());
 		putMethod.setQueryString(queryString);
 		
 		try {
@@ -270,8 +275,40 @@ public class XwikiBridgeInterfaceRestResource extends DefaultRestResource
 
     @Override
     public Entities analyseText(String modelSetId, String contextArtifactId, String userId, String title, String text) throws LpRestException {
-        // TODO Auto-generated method stub
-		return null;
+		HttpClient httpClient = this.getClient();
+		String uri = String.format("%s/learnpad/or/bridge/%s/analysetext", DefaultRestResource.REST_URI, modelSetId);
+		PostMethod postMethod = new PostMethod(uri);
+		postMethod.addRequestHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML);
+
+		NameValuePair[] queryString = new NameValuePair[4];
+		queryString[0] = new NameValuePair("modelsetid", modelSetId);
+		queryString[1] = new NameValuePair("contextArtifactId", contextArtifactId);
+		queryString[2] = new NameValuePair("userid", userId);
+		queryString[3] = new NameValuePair("title", title);
+		postMethod.setQueryString(queryString);
+		
+		RequestEntity requestEntity;
+		InputStream entitiesAsStream = null;
+		try {
+			requestEntity = new StringRequestEntity(text, MediaType.APPLICATION_XML, "UTF-8");
+			postMethod.setRequestEntity(requestEntity);
+
+			httpClient.executeMethod(postMethod);
+			entitiesAsStream = postMethod.getResponseBodyAsStream(); 
+		} catch (IOException e) {
+			throw new LpRestExceptionXWikiImpl(e.getMessage(), e.getCause());
+		}
+
+		Entities entities = null;
+
+		try {
+			JAXBContext jc = JAXBContext.newInstance(Entities.class);
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			entities = (Entities) unmarshaller.unmarshal(entitiesAsStream);
+		} catch (JAXBException e) {
+			throw new LpRestExceptionXWikiImpl(e.getMessage(), e.getCause());
+		}
+		return entities;
     }
 
     @Override
@@ -347,5 +384,56 @@ public class XwikiBridgeInterfaceRestResource extends DefaultRestResource
 
 		return processingStatus;
 	}
+
+    @Override
+//    public void updateSimulationScore(String modelSetId, String simulationSessionId, String processArtifactId, Long timestamp, String userId, ScoreType scoreType, Float score) throws LpRestException {
+//		HttpClient httpClient = this.getClient();
+//		String uri = String.format("%s/learnpad/or/bridge/%s/simulationscore", DefaultRestResource.REST_URI, modelSetId);
+//		PostMethod postMethod = new PostMethod(uri);
+//		postMethod.addRequestHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML);
+//
+//		NameValuePair[] queryString = new NameValuePair[6];		
+//		queryString[0] = new NameValuePair("simulationsessionid", simulationSessionId);
+//		queryString[1] = new NameValuePair("processartifactid", processArtifactId);
+//		queryString[2] = new NameValuePair("timestamp", timestamp.toString()); 
+//		queryString[3] = new NameValuePair("userid", userId);
+//		queryString[4] = new NameValuePair("scoretype", scoreType.name()); 
+//		queryString[5] = new NameValuePair("score", String.valueOf(score));
+//		postMethod.setQueryString(queryString);
+//                     
+//		try {
+//			httpClient.executeMethod(postMethod);
+//		} catch (IOException e) {
+//			throw new LpRestExceptionXWikiImpl(e.getMessage(), e.getCause());
+//		}
+//    }
+    public void updateSimulationScore(String modelSetId, String simulationSessionId, String processArtifactId, Long timestamp, String userId, SimulationScoresMap scoreMap) throws LpRestException {		    	
+    	HttpClient httpClient = this.getClient();
+		String uri = String.format("%s/learnpad/or/bridge/%s/simulationscore", DefaultRestResource.REST_URI, modelSetId);
+		PostMethod postMethod = new PostMethod(uri);
+		postMethod.addRequestHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML);
+		String contentType = "application/xml";
+
+		NameValuePair[] queryString = new NameValuePair[4];		
+		queryString[0] = new NameValuePair("simulationsessionid", simulationSessionId);
+		queryString[1] = new NameValuePair("processartifactid", processArtifactId);
+		queryString[2] = new NameValuePair("timestamp", timestamp.toString()); 
+		queryString[3] = new NameValuePair("userid", userId);
+		postMethod.setQueryString(queryString);
+                     
+		try {			
+			Writer scoreMapWriter = new StringWriter();
+			JAXBContext jc = JAXBContext.newInstance(SimulationScoresMap.class);
+			jc.createMarshaller().marshal(scoreMap, scoreMapWriter);
+
+			RequestEntity requestEntity = new StringRequestEntity(
+					scoreMapWriter.toString(), contentType, "UTF-8");
+			postMethod.setRequestEntity(requestEntity);
+			
+			httpClient.executeMethod(postMethod);
+		} catch (IOException | JAXBException e) {
+			throw new LpRestExceptionXWikiImpl(e.getMessage(), e.getCause());
+		}
+    }
 
 }

@@ -90,6 +90,7 @@ ________________________________________________________________________________
   transfer:<xsl:value-of select="$id"/>
   rdf:type owl:Class;
   rdf:type emo:BPMN_MetaModel ;
+  rdf:type bpmn:Process ;
   rdfs:subClassOf emo:BPMN_MetaModel ;
   rdfs:label "<xsl:value-of select="$name"/>"^^xsd:string ;
   emo:objectTypeHasName "<xsl:value-of select="$class"/>"^^xsd:string ;
@@ -481,6 +482,7 @@ ________________________________________________________________________________
             <xsl:param name="name" />
             <xsl:param name="class" />
             <xsl:param name="materialURL"/>
+            <xsl:param name="contributorEmails"/>
             <xsl:param name="description" />
             <xsl:param name="comment" />
   transfer:<xsl:value-of select="$id"/>
@@ -490,12 +492,19 @@ ________________________________________________________________________________
   rdfs:label "<xsl:value-of select="$name"/>"^^xsd:string ;
   emo:objectTypeHasName "<xsl:value-of select="$class"/>"^^xsd:string ;  
   dkm:documentHasURL "<xsl:value-of select="$materialURL"/>"^^xsd:string ;  
-  dkm:documentHasMIMEType "text/html"^^xsd:string ;
+  <xsl:choose>
+    <xsl:when test="contains($materialURL, '.doc')">dkm:documentHasMIMEType "application/msword"^^xsd:string ;</xsl:when>
+    <xsl:when test="contains($materialURL, '.pdf')">dkm:documentHasMIMEType "application/pdf"^^xsd:string ;</xsl:when>
+    <xsl:otherwise>dkm:documentHasMIMEType "text/html"^^xsd:string ;</xsl:otherwise>
+  </xsl:choose>
+  <xsl:for-each select="$contributorEmails">
+    dkm:documentHasContributorEmail "<xsl:value-of select="."/>"^^xsd:string ;  
+  </xsl:for-each>
   dkm:documentHasDescription """<xsl:value-of select="$description"/>"""^^xsd:string ;
   rdfs:comment """<xsl:value-of select="$comment"/>"""^^xsd:string ;
 	</xsl:template>
 	
-	<xsl:template name="addInModelConnectionForLearningDocumentToCompetency">
+    <xsl:template name="addInModelConnectionForLearningDocumentToCompetency">
             <xsl:param name="toId"/>  dkm:learningDocumentIncreasesCompetenciesToLevel transfer:<xsl:value-of select="$toId"/> ;<xsl:text>&#10;</xsl:text>
     	</xsl:template>	
 	
@@ -594,7 +603,9 @@ ________________________________________________________________________________
             <xsl:param name="firstName" />
             <xsl:param name="lastName" />
             <xsl:param name="email" />
-            <xsl:param name="phoneNo" />            
+            <xsl:param name="phoneNo" />
+            <xsl:param name="skypeId" />
+            <xsl:param name="officeAddress" />
   transfer:<xsl:value-of select="$id"/>
   rdf:type owl:Class;
   rdf:type omm:Performer ;
@@ -608,6 +619,10 @@ ________________________________________________________________________________
 		  <xsl:if test="$email != ''">emo:performerHasEmailAddress "<xsl:value-of select="$email"/>"^^xsd:string ;
 		  </xsl:if>
 		  <xsl:if test="$phoneNo != ''">omm:performerHasPhoneNumber "<xsl:value-of select="$phoneNo"/>"^^xsd:string ;
+		  </xsl:if>
+		  <xsl:if test="$skypeId != ''">omm:performerHasSkypeId "<xsl:value-of select="$skypeId"/>"^^xsd:string ;
+		  </xsl:if>
+		  <xsl:if test="$officeAddress != ''">omm:performerHasOfficeAddress "<xsl:value-of select="$officeAddress"/>"^^xsd:string ;
 		  </xsl:if>
 	</xsl:template>
 	

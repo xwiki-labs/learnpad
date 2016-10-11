@@ -41,7 +41,7 @@ import javax.naming.InitialContext;
 
 import org.apache.commons.net.ntp.TimeStamp;
 
-import eu.learnpad.sim.rest.event.impl.SessionScoreUpdateEvent;
+import eu.learnpad.sim.rest.event.ScoreType;
 import eu.learnpad.simulator.mon.consumer.ConsumerProfile;
 import eu.learnpad.simulator.mon.utils.DebugMessages;
 
@@ -120,12 +120,15 @@ public class ResponseDispatcher {
 		}
 	}
 	
-	public static void saveAndNotifyLearnersScore(String learnersID, String idBPMN, String idPath, SessionScoreUpdateEvent sessionScore) {
 	
-		ResponseDispatcher.lam.computeAndSaveScores(new ArrayList<String>(Arrays.asList(learnersID.split(","))),idBPMN, idPath, sessionScore);
-		
-	}	
+	
+	public static void setPathCompletedAndPropagateScores(String learnersID, String idPath, String idBPMN)
+	{
+		ResponseDispatcher.lam.computeAndPropagateScores(new ArrayList<String>(Arrays.asList(learnersID.split(","))), idPath, idBPMN);
+	}
 
+	
+	
 	public static void sendResponse(Object object, String enablerName, String answerTopic)
 	{
 		try {
@@ -141,6 +144,24 @@ public class ResponseDispatcher {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void sendScoresEvaluation(HashMap<ScoreType, Float> scores, String destination, String channel, String userid)
+	{
+		try {
+			publicSession = connection.createTopicSession(false,Session.AUTO_ACKNOWLEDGE);
+			connectionTopic = publishSession.createTopic(channel);
+			tPub = publishSession.createPublisher(connectionTopic);
+			
+			ObjectMessage sendMessage = publishSession.createObjectMessage();
+			sendMessage.setObject((Serializable) scores);
+			sendMessage.setStringProperty("DESTINATION", destination);
+			sendMessage.setStringProperty("USERID", userid);
+			tPub.publish(sendMessage);
+		} catch (JMSException e) {
+			DebugMessages.println(TimeStamp.getCurrentTime(), ResponseDispatcher.class.getSimpleName(),  "Exception during sendScoresEvaluation method execution");
+		}
+	}
+	
 		
 	public static void NotifyMeValue(String ruleMatched, String enablerName, String key, String value)
 	{

@@ -81,7 +81,7 @@ LPUI.CollaborativeDocumentSheet.button.validate=Valida
 LPUI.ProfilePanel.title=Il mio Account
 LPUI.ProfilePanel.profile=Il mio Profilo
 LPUI.ProfilePanel.dashboard=Pannello di Controllo
-LPUI.ProfilePanel.join=Unisciti ad una simulazione
+LPUI.ProfilePanel.join=Unisciti
 LPUI.ProfilePanel.join.help=Sei stato invitato in un simulazione!
 
 # Recommendation panel
@@ -103,9 +103,15 @@ LPUI.RecommendationPanel.similarcases.category.applicationSector=Settore
 
 # Simulation Environment
 SimulationEnvironment.goback=Torna alla modalità di Navigazione
+LPUI.SimulationEnvironment.howto.label=Clicca qui
+LPUI.SimulationEnvironment.howto.info=per consultare una documentazione sulle risposte corrette da dare durante la simulazione
+LPUI.SimulationEnvironment.howto.warning.en=Documentazione in Inglese
+LPUI.SimulationEnvironment.howto.models=Modelli e Casi Disponibili
 
 # Dashboard
 LPUI.Dashboard.section.title=Score on the process "{0}"
+LPUI.Dashboard.calculate.button=Avvia Calcolo KPI
+LPUI.Dashboard.calculate.warning=L'operazione può richiedere tempo, e la pagina va ricaricata.
 
 # LPDocs
 LPDocs.WebHome.title=How To!
@@ -160,10 +166,10 @@ LPTours.BrowsingModeProcess.Table.title=**Tabella degli Elementi**
 LPTours.BrowsingModeProcess.Table.description=La tabella elenca le attività che fanno parte di un processo. Selezionando un'attività si sarà rediretti alla pagina relativa all'attività stessa. Si possono filtrare ed ordinare gli elementi contenuti nella tabella secondo i seguenti criteri : Nome, Tipologia e Data dell'ultima modifica. 
 ##
 LPTours.BrowsingModeProcess.BrowseButton.title=Pulsante **Naviga**
-LPTours.BrowsingModeProcess.BrowseButton.description=Questo pulsante permette di avviare l'esplorazione di un processo navigando le diverse attività nelle quali esso si articola (link **Browsing Mode**)
+LPTours.BrowsingModeProcess.BrowseButton.description=Questo pulsante permette di avviare l'esplorazione di un processo navigando le diverse attività nelle quali esso si articola (vedi [[Modalità Navigazione&gt;&gt;LPDocs.Browsing]])
 ##
 LPTours.BrowsingModeProcess.SimulationButton.title=Pulsante **Esegui**
-LPTours.BrowsingModeProcess.SimulationButton.description=Questo pulsante permette di avviare una simulazione del processo scelto. La simulazione può essere avviata secondo due modalità : 1) modalità utente singolo, 2) modalità multi-utente (link: **Simulation Mode**)
+LPTours.BrowsingModeProcess.SimulationButton.description=Questo pulsante permette di avviare una simulazione del processo scelto. La simulazione può essere avviata secondo due modalità : 1) modalità utente singolo, 2) modalità multi-utente (vedi [[Modalità Simulazione&gt;&gt;LPDocs.Simulation]])
 ##
 LPTours.BrowsingModeProcess.ContributeButton.title=Pulsante **Contribuisci**
 LPTours.BrowsingModeProcess.ContributeButton.description=Questo pulsante permette agli utenti di aggiungere informazioni o suggerimenti

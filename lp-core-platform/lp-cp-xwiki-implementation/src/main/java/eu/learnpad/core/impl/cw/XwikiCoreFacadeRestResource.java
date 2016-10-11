@@ -284,7 +284,7 @@ public class XwikiCoreFacadeRestResource extends DefaultRestResource implements 
 		queryString[0] = new NameValuePair("modelsetid", modelSetId);
 		queryString[1] = new NameValuePair("contextArtifactId", contextArtifactId);
 		queryString[2] = new NameValuePair("userid", userId);
-		queryString[2] = new NameValuePair("title", title);
+		queryString[3] = new NameValuePair("title", title);
 		postMethod.setQueryString(queryString);
 		
 		RequestEntity requestEntity;
@@ -302,7 +302,7 @@ public class XwikiCoreFacadeRestResource extends DefaultRestResource implements 
 		Entities entities = null;
 
 		try {
-			JAXBContext jc = JAXBContext.newInstance(Recommendations.class);
+			JAXBContext jc = JAXBContext.newInstance(Entities.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
 			entities = (Entities) unmarshaller.unmarshal(entitiesAsStream);
 		} catch (JAXBException e) {
@@ -333,6 +333,25 @@ public class XwikiCoreFacadeRestResource extends DefaultRestResource implements 
 		}
 	}
 	
+	@Override
+	public String calculateKPI(String modelSetId) throws LpRestException {
+		HttpClient httpClient = this.getClient();
+		String uri = String.format("%s/learnpad/cw/corefacade/dashboardkpi/%s/calculatekpi", DefaultRestResource.REST_URI, modelSetId);
+		GetMethod getMethod = new GetMethod(uri);
+		getMethod.addRequestHeader(HttpHeaders.ACCEPT, MediaType.TEXT_PLAIN);
+
+		NameValuePair[] queryString = new NameValuePair[1];
+		queryString[0] = new NameValuePair("modelsetid", modelSetId);
+		getMethod.setQueryString(queryString);
+
+		try {
+			httpClient.executeMethod(getMethod);
+			String url = getMethod.getResponseBodyAsString();
+			return url;
+		} catch (IOException e) {
+			throw new LpRestExceptionXWikiImpl(e.getMessage(), e);
+		}
+	}
 	
 	@Override
 	public InputStream transform(ModelSetType type, InputStream model) throws LpRestException {
@@ -438,4 +457,5 @@ public class XwikiCoreFacadeRestResource extends DefaultRestResource implements 
 			throw new LpRestExceptionXWikiImpl(e.getMessage(), e);
 		}
 	}
+
 }

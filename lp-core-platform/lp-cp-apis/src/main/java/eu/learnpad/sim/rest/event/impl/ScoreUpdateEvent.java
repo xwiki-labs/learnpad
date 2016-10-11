@@ -22,8 +22,6 @@ package eu.learnpad.sim.rest.event.impl;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import eu.learnpad.sim.rest.event.AbstractEvent;
 import eu.learnpad.sim.rest.event.EventType;
 import eu.learnpad.sim.rest.event.ScoreType;
@@ -51,32 +49,32 @@ public class ScoreUpdateEvent extends AbstractEvent {
 	 * The new session score of the user
 	 */
 	
-	public ObjectNode updatedScore;
-
+	public Map<ScoreType, Float> scores;
 
 	public ScoreUpdateEvent() {
 		super();
 	}
 
 	public ScoreUpdateEvent(Long timestamp, String simulationsessionid, List<String> involvedusers, String modelsetid,
-			Map<String, Object> simulationSessionData, String processartifactid, String user, ScoreType scoreUpdateName, Float scoreUpdateValue) {
+			Map<String, Object> simulationSessionData, String processartifactid, String user, Map<ScoreType, Float> scores) {
 		super(EventType.SCORE_UPDATE, timestamp, simulationsessionid, involvedusers, modelsetid, simulationSessionData);
+
+		this.scores = scores;
 		this.processartifactid = processartifactid;
-		this.updatedScore.put(scoreUpdateName.toString(), scoreUpdateValue);
 		this.user = user;
 	}
-
-	public ObjectNode getUpdatedScore() {
-		return updatedScore;
+	
+	public Map<ScoreType, Float> getScoreUpdate() {
+		return scores;
 	}
 
-	public void setUpdatedScore(ObjectNode updatedScore) {
-		this.updatedScore = updatedScore;
+	public void setScoreUpdate(Map<ScoreType, Float> scores) {
+		this.scores = scores;
 	}
 	
 	@Override
 	public String toString() {
 		return super.toString() + " processartifactid=" + processartifactid + " user=" + user + " updatedScore="
-				+ updatedScore.toString();
+				+ scores.values().toString();
 	}
 }

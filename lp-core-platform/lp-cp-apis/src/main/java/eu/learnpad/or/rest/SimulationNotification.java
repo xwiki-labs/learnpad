@@ -26,6 +26,7 @@ import javax.ws.rs.QueryParam;
 
 import eu.learnpad.exception.LpRestException;
 import eu.learnpad.or.rest.data.SimulationData;
+import eu.learnpad.or.rest.data.SimulationScoresMap;
 
 public interface SimulationNotification {
 
@@ -96,4 +97,29 @@ public interface SimulationNotification {
 	void simulationTaskEndNotification(@PathParam("modelsetid") String modelSetId, @PathParam("modelid") String modelId,
 			@QueryParam("artifactid") String artifactId, @QueryParam("simulationid") String simulationId,
 			SimulationData data) throws LpRestException;
+        
+        /**
+         * 
+         * @param modelSetId
+      	 *            is the modelset ID concerned by the simulation
+         * @param simulationSessionId
+         *            optional. Must be set if score balue belongs to simulation session case.
+         * @param processArtifactId
+         *            optional. Must be set if score value belongs to process.
+         * @param timestamp
+         *            score value creation timestamp
+         * @param userId
+         *            id of the user the score belongs to
+         * @param scoreMap
+         *            a map of pairs : (<score type>; <score value>) encapsulated in the data structure {@link eu.learnpad.or.rest.data.SimulationScoresMap}
+         */
+	// <host>/learnpad/or/bridge/{modelsetid}/simulationscore?modelsetid=LP_ME1&simulationsessionid=1&processartifactid=mod.1&timestamp=44334&userid=uid
+
+	@POST
+	@Path("/{modelsetid}/simulationscore")
+	void updateSimulationScore(@PathParam("modelsetid") String modelSetId, @QueryParam("simulationsessionid") String simulationSessionId,
+			@QueryParam("processartifactid") String processArtifactId,
+			@QueryParam("timestamp") Long timestamp, @QueryParam("userid") String userId,
+                        SimulationScoresMap scoreMap) throws LpRestException;        
+        
 }

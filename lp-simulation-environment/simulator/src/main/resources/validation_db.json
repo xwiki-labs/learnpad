@@ -562,22 +562,121 @@
             }
         ]
     },
-    "y3-demo" : {
-        "usertask1" : [
+    "mod.21093" : {
+        "obj.27830" : [
             {
                 "input" : {
-                    "case" : "637.2015"
+                    "case" : "637-2015"
                 },
                 "output" : {
-                    "doConfOfService" : false
+                    "accepted" : false
                 }
             },
             {
                 "input" : {
-                    "case" : "829.2015"
+                    "case" : "829-2015"
                 },
                 "output" : {
-                    "doConfOfService" : true,
+                    "accepted" : true
+                }
+            }
+        ],
+        "obj.27782" : [
+            {
+                "input" : {
+
+                },
+                "output" : {
+                    "doConfOfService" : true
+                }
+            }
+        ],
+        "obj.27921" : [
+            {
+                "input" : {
+                    "case" : "829-2015"
+                },
+                "output" : {
+                    "offEdiuzia" : true,
+                    "offPorto" : true,
+                    "offAmb" : true,
+                    "offAtt" : true,
+                    "offPolizia" : true,
+                    "offTrib" : true,
+                    "offPat" : false,
+                    "offSind" : false,
+                    "offARPAM" : false,
+                    "offServIgiene" : false,
+                    "offDepIgiene" : false,
+                    "offPrev" : false,
+                    "offVVFF" : false,
+                    "offAreaAmb" : false,
+                    "offAreaEco" : false,
+                    "offVal" : false,
+                    "offGest" : false,
+                    "offSoprint" : true,
+                    "offFerrov" : false,
+                    "offANAS" : false,
+                    "offQUEST" : false,
+                    "offPREF" : false,
+                    "offISP" : false,
+                    "offDog" : true,
+                    "offCap" : true
+                }
+            }
+        ],
+        "obj.27987" : [
+            {
+                "input" : {
+                    "case" : "829-2015"
+                },
+                "output" : {
+                    "offEdiuzia" : true,
+                    "offPorto" : true,
+                    "offAmb" : true,
+                    "offAtt" : true,
+                    "offPolizia" : true,
+                    "offTrib" : true,
+                    "offPat" : false,
+                    "offSind" : false,
+                    "offARPAM" : false,
+                    "offServIgiene" : false,
+                    "offDepIgiene" : false,
+                    "offPrev" : false,
+                    "offVVFF" : false,
+                    "offAreaAmb" : false,
+                    "offAreaEco" : false,
+                    "offVal" : false,
+                    "offGest" : false,
+                    "offSoprint" : true,
+                    "offFerrov" : false,
+                    "offANAS" : false,
+                    "offQUEST" : false,
+                    "offPREF" : false,
+                    "offISP" : false,
+                    "offDog" : true,
+                    "offCap" : true
+                }
+            }
+        ],
+        "obj.27990" : [
+            {
+                "input" : {
+                    "case" : "829-2015"
+                },
+                "output" : {
+                    "applicationStatus" : "ok"
+                }
+            }
+        ]
+    },
+    "mod.21262" : {
+        "usertask1" : [
+            {
+                "input" : {
+                    "case" : "829-2015"
+                },
+                "output" : {
                     "offEdiuzia" : true,
                     "offPorto" : true,
                     "offAmb" : true,
@@ -607,10 +706,9 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015"
+                    "case" : "1118-2015"
                 },
                 "output" : {
-                    "doConfOfService" : true,
                     "offEdiuzia" : true,
                     "offPorto" : false,
                     "offAmb" : true,
@@ -642,7 +740,7 @@
         "usertask5" : [
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -651,7 +749,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offPorto"
                 },
                 "output" : {
@@ -660,7 +758,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offAmb"
                 },
                 "output" : {
@@ -669,7 +767,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offAtt"
                 },
                 "output" : {
@@ -678,7 +776,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offPolizia"
                 },
                 "output" : {
@@ -687,7 +785,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offTrib"
                 },
                 "output" : {
@@ -696,7 +794,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offSoprint"
                 },
                 "output" : {
@@ -705,7 +803,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offDog"
                 },
                 "output" : {
@@ -714,7 +812,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offCap"
                 },
                 "output" : {
@@ -723,7 +821,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -732,7 +830,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offAmb"
                 },
                 "output" : {
@@ -741,7 +839,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offAtt"
                 },
                 "output" : {
@@ -750,7 +848,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offPat"
                 },
                 "output" : {
@@ -759,7 +857,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offSoprint"
                 },
                 "output" : {
@@ -770,7 +868,7 @@
         "usertask4" : [
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -779,7 +877,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offPorto"
                 },
                 "output" : {
@@ -788,7 +886,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offAmb"
                 },
                 "output" : {
@@ -797,7 +895,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offAtt"
                 },
                 "output" : {
@@ -806,7 +904,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offPolizia"
                 },
                 "output" : {
@@ -815,7 +913,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offTrib"
                 },
                 "output" : {
@@ -824,7 +922,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offSoprint"
                 },
                 "output" : {
@@ -833,7 +931,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offDog"
                 },
                 "output" : {
@@ -842,7 +940,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offCap"
                 },
                 "output" : {
@@ -851,7 +949,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -860,7 +958,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offAmb"
                 },
                 "output" : {
@@ -869,7 +967,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offAtt"
                 },
                 "output" : {
@@ -878,7 +976,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offPat"
                 },
                 "output" : {
@@ -887,7 +985,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offSoprint"
                 },
                 "output" : {
@@ -898,7 +996,7 @@
         "usertask11" : [
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -907,7 +1005,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offPorto"
                 },
                 "output" : {
@@ -916,16 +1014,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offPorto"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offAmb"
                 },
                 "output" : {
@@ -934,16 +1023,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offAmb"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offAtt"
                 },
                 "output" : {
@@ -952,16 +1032,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offAtt"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offPolizia"
                 },
                 "output" : {
@@ -970,16 +1041,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offPolizia"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offTrib"
                 },
                 "output" : {
@@ -988,7 +1050,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offSoprint"
                 },
                 "output" : {
@@ -997,16 +1059,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offSoprint"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offDog"
                 },
                 "output" : {
@@ -1015,34 +1068,16 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offDog"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off1Role" : "offCap"
                 },
                 "output" : {
                     "off1FeedbackOpinionStatus" : "s1"
                 }
             },
-						{
-                "input" : {
-                    "case" : "829.2015",
-                    "off1Role" : "offCap"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
             {
                 "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -1051,16 +1086,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off1Role" : "offEdiuzia"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offAmb"
                 },
                 "output" : {
@@ -1069,16 +1095,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off1Role" : "offAmb"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offAtt"
                 },
                 "output" : {
@@ -1087,16 +1104,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off1Role" : "offAtt"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offPat"
                 },
                 "output" : {
@@ -1105,36 +1113,18 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off1Role" : "offPat"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off1Role" : "offSoprint"
                 },
                 "output" : {
                     "off1FeedbackOpinionStatus" : "s1"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
-                    "off1Role" : "offSoprint"
-                },
-                "output" : {
-                    "off1FeedbackOpinionStatus" : "s5"
                 }
             }
         ],
         "usertask8" : [
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -1143,25 +1133,16 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offPorto"
                 },
                 "output" : {
                     "off2FeedbackOpinionStatus" : "s1"
                 }
             },
-						{
-                "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offPorto"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offAmb"
                 },
                 "output" : {
@@ -1170,16 +1151,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offAmb"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offAtt"
                 },
                 "output" : {
@@ -1188,16 +1160,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offAtt"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offPolizia"
                 },
                 "output" : {
@@ -1206,16 +1169,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offPolizia"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offTrib"
                 },
                 "output" : {
@@ -1224,7 +1178,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offSoprint"
                 },
                 "output" : {
@@ -1233,16 +1187,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offSoprint"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offDog"
                 },
                 "output" : {
@@ -1251,16 +1196,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offDog"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "829.2015",
+                    "case" : "829-2015",
                     "off2Role" : "offCap"
                 },
                 "output" : {
@@ -1269,16 +1205,7 @@
             },
             {
                 "input" : {
-                    "case" : "829.2015",
-                    "off2Role" : "offCap"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offEdiuzia"
                 },
                 "output" : {
@@ -1287,16 +1214,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off2Role" : "offEdiuzia"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offAmb"
                 },
                 "output" : {
@@ -1305,16 +1223,7 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off2Role" : "offAmb"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offAtt"
                 },
                 "output" : {
@@ -1323,67 +1232,58 @@
             },
             {
                 "input" : {
-                    "case" : "1118.2015",
-                    "off2Role" : "offAtt"
-                },
-                "output" : {
-                    "off2FeedbackOpinionStatus" : "s5"
-                }
-            },
-            {
-                "input" : {
-                    "case" : "1118.2015",
+                    "case" : "1118-2015",
                     "off2Role" : "offPat"
                 },
                 "output" : {
                     "off2FeedbackOpinionStatus" : "s1"
                 }
-            },
-						{
-								"input" : {
-										"case" : "1118.2015",
-										"off2Role" : "offPat"
-								},
-								"output" : {
-										"off2FeedbackOpinionStatus" : "s5"
-								}
-						},
-						{
-								"input" : {
-										"case" : "1118.2015",
-										"off2Role" : "offSoprint"
-								},
-								"output" : {
-										"off2FeedbackOpinionStatus" : "s1"
-								}
-						},
-						{
-								"input" : {
-										"case" : "1118.2015",
-										"off2Role" : "offSoprint"
-								},
-								"output" : {
-										"off2FeedbackOpinionStatus" : "s5"
-								}
-						}
-				],
-				"usertask16" : [
-						{
-								"input" : {
-										"case" : "829.2015"
-								},
-								"output" : {
-										"suapChoice" : "suapUC"
-								}
-						},
-						{
-								"input" : {
-										"case" : "1118.2015"
-								},
-								"output" : {
-										"suapChoice" : "suapOk"
-								}
-						}
-				]
-		}
+	          },
+	          {
+		            "input" : {
+			              "case" : "1118-2015",
+			              "off2Role" : "offPat"
+		            },
+		            "output" : {
+			              "off2FeedbackOpinionStatus" : "s5"
+		            }
+	          },
+	          {
+		            "input" : {
+			              "case" : "1118-2015",
+			              "off2Role" : "offSoprint"
+		            },
+		            "output" : {
+			              "off2FeedbackOpinionStatus" : "s1"
+		            }
+	          },
+	          {
+		            "input" : {
+			              "case" : "1118-2015",
+			              "off2Role" : "offSoprint"
+		            },
+		            "output" : {
+			              "off2FeedbackOpinionStatus" : "s5"
+		            }
+	          }
+	      ],
+	      "usertask16" : [
+		        {
+			          "input" : {
+				            "case" : "829-2015"
+			          },
+			          "output" : {
+				            "suapChoice" : "suapUC"
+			          }
+		        },
+		        {
+			          "input" : {
+				            "case" : "1118-2015"
+			          },
+			          "output" : {
+				            "suapChoice" : "suapOk"
+			          }
+		        }
+	      ]
+    }
 }
